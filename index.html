@@ -3,75 +3,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
-
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/11.5.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/11.5.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/11.5.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/11.5.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/11.5.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/11.5.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/11.5.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/11.5.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/11.5.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/11.5.0/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      img { padding-bottom: 10px;}
-      #message { background: #ECEFF1; max-width: 500px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #4fdb89; font-weight: bold; font-size: 64px; margin: 0 0 8px; }
-      #message h1 { font-size: 18px; line-height: 100%; font-weight: 300; color: #33312E; margin: 0 0 16px;}
-      #message p { color: #ee664d; line-height: 10%; margin: 8px 0 24px; font-size: 12px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      /* #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); } */
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      /* @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffffff; }
-      } */
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <img src="resources/imgs/logo_dividim_02.png" alt="El meu logo" width="200" height="auto">
-      <!-- <h2>Dividim</h2>  -->
-      <h1>L`aplicació que simplifica compartir les despes.</h1>
-      <p>Molt aviat a la AppStore!!!</p>
-    </div>
-    <!-- subscripció -->
-    <h2>Envia les teves dades a Firebase</h2>
-
-    <form id="formulari">
-        <label for="nom">Nom:</label>
-        <input type="text" id="nom" required>
-        
-        <label for="email">Email:</label>
-        <input type="email" id="email" required>
-        
-        <button type="submit">Enviar</button>
-    </form>
-
-    <script>
-      fetch("/__/config.json")
-        .then(response => response.json())
-        .then(config => console.log("Config carregada:", config))
-        .catch(error => console.error("Error carregant config:", error));
-    </script>
-  </body>
-</html>
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dividim - Compartir despeses</title>
 
     <!-- Firebase SDK -->
@@ -83,22 +14,23 @@
       /* Estils generals */
       body {
         font-family: Arial, sans-serif;
-        text-align: center;
         background: #ECEFF1;
         padding: 20px;
         color: #33312E;
+        display: flex;
+        justify-content: center;
       }
 
-      /* Contenidor principal: Ara sense cap requadre */
-      #message {
+      /* Contenidor principal */
+      .container {
         max-width: 400px;
-        margin: 20px auto;
-        padding: 0;
-        text-align: center;
+        width: 100%;
+        text-align: left; /* Tot justificat a l'esquerra */
       }
 
-      #message img {
+      img {
         width: 150px;
+        display: block;
         margin-bottom: 10px;
       }
 
@@ -108,12 +40,15 @@
         margin-bottom: 10px;
       }
 
+      p {
+        font-size: 14px;
+        color: #33312E;
+      }
+
       /* Estils del formulari */
       form {
-        max-width: 400px;
-        margin: 0 auto;
         text-align: left;
-        padding: 0;
+        width: 100%;
       }
 
       label {
@@ -127,7 +62,6 @@
         width: 100%;
         padding: 10px;
         border: none;
-        border-bottom: 2px solid transparent; /* Sense requadre */
         background: #ECEFF1; /* Mateix color que el fons */
         font-size: 18px;
         color: #33312E;
@@ -158,22 +92,22 @@
     </style>
   </head>
   <body>
-    <div id="message">
+    <div class="container">
       <img src="resources/imgs/logo_dividim_02.png" alt="El meu logo">
       <h1>L'aplicació que simplifica compartir les despeses.</h1>
       <p>Molt aviat a la App Store!</p>
-    </div>
 
-    <h2>Uneix-te a Dividim</h2>
-    <form id="formulari">
-        <label for="nom">Nom:</label>
-        <input type="text" id="nom" required>
-        
-        <label for="email">Email:</label>
-        <input type="email" id="email" required>
-        
-        <button type="submit">Enviar</button>
-    </form>
+      <h2>Uneix-te a Dividim</h2>
+      <form id="formulari">
+          <label for="nom">Nom:</label>
+          <input type="text" id="nom" required>
+          
+          <label for="email">Email:</label>
+          <input type="email" id="email" required>
+          
+          <button type="submit">Enviar</button>
+      </form>
+    </div>
 
     <script>
       // Carreguem la configuració de Firebase
