@@ -46,45 +46,56 @@
       <h1>L`aplicació que simplifica compartir les despes.</h1>
       <p>Molt aviat a la AppStore!!!</p>
     </div>
-    <!-- <p id="load">Carregant</p> -->
+    <!-- subscripció -->
+    <h2>Envia les teves dades a Firebase</h2>
 
-    <!-- <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+    <form id="formulari">
+        <label for="nom">Nom:</label>
+        <input type="text" id="nom" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        
+        <button type="submit">Enviar</button>
+    </form>
 
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script> -->
+    <script type="module">
+        // Firebase SDK
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
+
+        // 🔹 Configuració de Firebase (SUBSTITUEIX-HO PEL TEU)
+        const firebaseConfig = {
+            apiKey: "LA_TEVA_API_KEY",
+            authDomain: "EL_TEU_DOMINI.firebaseapp.com",
+            projectId: "EL_TEU_PROJECTE",
+            storageBucket: "EL_TEU_STORAGE_BUCKET",
+            messagingSenderId: "EL_TEU_MESSAGING_ID",
+            appId: "EL_TEU_APP_ID"
+        };
+
+        // 🔹 Inicialitza Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // 🔹 Agafa dades del formulari
+        document.getElementById("formulari").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const nom = document.getElementById("nom").value;
+            const email = document.getElementById("email").value;
+
+            try {
+                await addDoc(collection(db, "usuaris"), {
+                    nom: nom,
+                    email: email,
+                    timestamp: new Date()
+                });
+                alert("Dades enviades correctament!");
+            } catch (error) {
+                console.error("Error afegint el document: ", error);
+            }
+        });
+    </script>
   </body>
 </html>
