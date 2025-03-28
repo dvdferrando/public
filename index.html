@@ -59,44 +59,11 @@
         <button type="submit">Enviar</button>
     </form>
 
-    <script type="module">
-        // Firebase SDK
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
-        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
-
-        // 🔹 Configuració de Firebase (SUBSTITUEIX-HO PEL TEU)
-        const firebaseConfig = {
-          apiKey: "AIzaSyCFX4SPjRAtrNbpoC90JGjMwtjKBUidNiw",
-          authDomain: "dividimweb.firebaseapp.com",
-          projectId: "dividimweb",
-          storageBucket: "dividimweb.firebasestorage.app",
-          messagingSenderId: "74888121358",
-          appId: "1:74888121358:web:4af2798edcc95aac63c05f",
-          measurementId: "G-6K5N82G2YL"
-      };
-
-        // 🔹 Inicialitza Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-
-        // 🔹 Agafa dades del formulari
-        document.getElementById("formulari").addEventListener("submit", async (e) => {
-            e.preventDefault();
-
-            const nom = document.getElementById("nom").value;
-            const email = document.getElementById("email").value;
-
-            try {
-                await addDoc(collection(db, "usuaris"), {
-                    nom: nom,
-                    email: email,
-                    timestamp: new Date()
-                });
-                alert("Dades enviades correctament!");
-            } catch (error) {
-                console.error("Error afegint el document: ", error);
-            }
-        });
+    <script>
+      fetch("/__/config.json")
+        .then(response => response.json())
+        .then(config => console.log("Config carregada:", config))
+        .catch(error => console.error("Error carregant config:", error));
     </script>
   </body>
 </html>
