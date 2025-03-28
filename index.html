@@ -67,3 +67,147 @@
     </script>
   </body>
 </html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dividim - Compartir despeses</title>
+
+    <!-- Firebase SDK -->
+    <script defer src="/__/firebase/11.5.0/firebase-app-compat.js"></script>
+    <script defer src="/__/firebase/11.5.0/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/init.js"></script>
+
+    <style>
+      /* Estils generals */
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background: #ECEFF1;
+        padding: 20px;
+        color: #33312E;
+      }
+
+      /* Contenidor principal: Ara sense cap requadre */
+      #message {
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 0;
+        text-align: center;
+      }
+
+      #message img {
+        width: 150px;
+        margin-bottom: 10px;
+      }
+
+      h1, h2 {
+        font-size: 22px;
+        color: #EE6C4D;
+        margin-bottom: 10px;
+      }
+
+      /* Estils del formulari */
+      form {
+        max-width: 400px;
+        margin: 0 auto;
+        text-align: left;
+        padding: 0;
+      }
+
+      label {
+        font-size: 16px;
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-bottom: 2px solid transparent; /* Sense requadre */
+        background: #ECEFF1; /* Mateix color que el fons */
+        font-size: 18px;
+        color: #33312E;
+        transition: border-bottom 0.3s;
+      }
+
+      input:focus {
+        border-bottom: 2px solid #17A398;
+        outline: none;
+      }
+
+      button {
+        background: #EE6C4D;
+        color: white;
+        padding: 12px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        width: 100%;
+        transition: 0.3s;
+        margin-top: 10px;
+      }
+
+      button:hover {
+        background: #D95A3D;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="message">
+      <img src="resources/imgs/logo_dividim_02.png" alt="El meu logo">
+      <h1>L'aplicació que simplifica compartir les despeses.</h1>
+      <p>Molt aviat a la App Store!</p>
+    </div>
+
+    <h2>Uneix-te a Dividim</h2>
+    <form id="formulari">
+        <label for="nom">Nom:</label>
+        <input type="text" id="nom" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        
+        <button type="submit">Enviar</button>
+    </form>
+
+    <script>
+      // Carreguem la configuració de Firebase
+      fetch("/__/config.json")
+        .then(response => response.json())
+        .then(config => {
+          firebase.initializeApp(config);
+          console.log("Firebase inicialitzat", config);
+
+          const db = firebase.firestore(); // Inicialitza Firestore
+
+          // Escoltem el formulari per guardar dades
+          document.getElementById("formulari").addEventListener("submit", function(event) {
+              event.preventDefault(); // Evita el refresc de la pàgina
+
+              const nom = document.getElementById("nom").value;
+              const email = document.getElementById("email").value;
+
+              db.collection("usuaris").add({
+                  nom: nom,
+                  email: email,
+                  timestamp: firebase.firestore.FieldValue.serverTimestamp()
+              })
+              .then(() => {
+                  alert("Dades enviades correctament!");
+                  document.getElementById("formulari").reset();
+              })
+              .catch(error => {
+                  console.error("Error afegint document:", error);
+                  alert("Error en enviar les dades.");
+              });
+          });
+        })
+        .catch(error => console.error("Error carregant config:", error));
+    </script>
+  </body>
+</html>
