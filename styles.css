@@ -1,0 +1,117 @@
+/* Estils generals */
+body {
+    font-family: Arial, sans-serif;
+    background: #ECEFF1;
+    padding: 20px;
+    color: #33312E;
+    display: flex;
+    justify-content: center;
+}
+
+/* Contenidor principal */
+.container {
+    max-width: 400px;
+    width: 100%;
+    text-align: left;
+    /* Tot justificat a l'esquerra */
+    margin-top: 20%;
+}
+
+.formulari {
+    padding: 0px;
+    border-radius: 10px;
+    margin-top: 200px;
+}
+
+img {
+    width: 200px;
+    display: block;
+    margin-bottom: -5px;
+}
+
+h1 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #33312E;
+    margin-bottom: -10px;
+}
+
+h2 {
+    font-size: 16px;
+    color: #33312E;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 14px;
+    color: #EE6C4D;
+}
+
+/* Estils del formulari */
+form {
+    text-align: left;
+    justify-content: center;
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid #33312E;
+    /* Línia de sota */
+    background: transparent;
+    outline: none;
+    color: #33312E;
+}
+
+label {
+    position: absolute;
+    left: 0px;
+    top: 10px;
+    font-size: 14px;
+    color: #17A398;
+    transition: 0.3s ease-in-out;
+}
+
+/* Quan l'input està actiu o ple, el label es mou amunt */
+input:focus+label,
+input:not(:placeholder-shown)+label {
+    top: -5px;
+    font-size: 12px;
+    color: #EE6C4D;
+}
+
+input:focus {
+    border-bottom: 1px solid #D95A3D;
+    outline: none;
+    margin-bottom: 5px;
+}
+
+input:not(:focus) {
+    border-bottom: 1px solid #17A398;
+    outline: none;
+    margin-bottom: 5px;
+}
+
+button {
+    background: #17A398;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #D95A3D;
+}
