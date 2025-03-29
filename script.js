@@ -78,6 +78,7 @@ fetch("/__/config.json")
         afegirLog("Enviant dades...");
        
     })
-    .catch(error => console.error("Error carregant config:", error));
+    .catch(error => afegirLog(`Error carregant config: ${error}`));
+    // .catch(error => console.error("Error carregant config:", error));
 
   
