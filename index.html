@@ -6,6 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dividim - L'app per compartir despeses</title>
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="resources/imgs/favicon.png">
+
+  <!-- reCAPTCHA -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6LecdgMrAAAAAGNFatzcbnaxBykUUVBWfcdVNcrtY"></script>
+
   <!-- Firebase SDK -->
   <script defer src="/__/firebase/11.5.0/firebase-app-compat.js"></script>
   <script defer src="/__/firebase/11.5.0/firebase-firestore-compat.js"></script>
@@ -25,15 +31,19 @@
     <div class="formulari">
       <h2>Estigues al cas del llançament!</h2>
       <form id="formulari">
+
         <div class="input-container">
           <input type="text" id="nom" placeholder=" " required>
           <label for="nom">Nom</label>
+          <span class="error" id="error-nom"></span> <!-- Missatge d'error per nom -->
         </div>
 
         <div class="input-container">
           <input type="email" id="email" placeholder=" " required>
           <label for="email">Email</label>
+          <span class="error" id="error-email"></span> <!-- Missatge d'error per email -->
         </div>
+
         <button type="submit">Enviar</button>
       </form>
     </div>

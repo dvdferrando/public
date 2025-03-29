@@ -116,6 +116,12 @@ input:not(:focus) {
     margin-bottom: 5px;
 }
 
+.error {
+    color: red;
+    font-size: 12px;
+    display: none; /* Ocultar els missatges d'error inicialment */
+}
+
 button {
     background: #17A398;
     color: white;
