@@ -78,10 +78,4 @@ fetch("/__/config.json")
         afegirLog("Enviant dades...");
        
     })
-    .catch(error => customLog(`Error carregant config: ${error}`));
-    // .catch(error => console.error("Error carregant config:", error));
-
-    function customLog(missatge) {
-        const logDiv = document.getElementById("log");
-        logDiv.innerHTML += `<p>${new Date().toLocaleTimeString()}: ${missatge}</p>`;
-    }
+    .catch(error => console.error("Error carregant config:", error));
