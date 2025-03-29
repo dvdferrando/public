@@ -1,6 +1,6 @@
 
 // Carreguem la configuració de Firebase
-fetch("/__/config.json")
+fetch("/firebase.json")
     .then(response => response.json())
     .then(config => {
         firebase.initializeApp(config);
