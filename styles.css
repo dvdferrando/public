@@ -1,26 +1,41 @@
 /* Estils generals */
-body {
+/* body {
     font-family: Arial, sans-serif;
     background: #ECEFF1;
     padding: 20px;
     color: #33312E;
     display: flex;
     justify-content: center;
-}
+} */
 
 /* Contenidor principal */
-.container {
+/* .container {
     max-width: 400px;
     width: 100%;
     text-align: left;
-    /* Tot justificat a l'esquerra */
     margin-top: 20%;
+} */
+html, body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    color: #33312E;
+    background: #ECEFF1;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Centra horitzontalment */
+    align-items: center; /* Centra verticalment */
+    text-align: left; /* Justifica text a l'esquerra */
+}
+.container {
+    width: 100%;
+    max-width: 500px; /* Ajusta l'ample si cal */
 }
 
 .formulari {
     padding: 0px;
     border-radius: 10px;
-    margin-top: 200px;
+    margin-top: 120px;
 }
 
 img {
