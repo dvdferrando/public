@@ -16,7 +16,6 @@ const firebaseConfig = {
 
 // Inicialitza Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 
 // Inicialitza Firestore
 const db = getFirestore(app);
@@ -85,5 +84,5 @@ function validateEmail(email) {
 
 function afegirLog(missatge) {
     const logDiv = document.getElementById("log");
-    logDiv.innerHTML += `<p>${new Date().toLocaleTimeString()}: ${missatge}</p>`;
+    logDiv.innerHTML += `<p>${new Date().toLocaleTimeString()}: ${ "Log: " + missatge}</p>`;
 }
